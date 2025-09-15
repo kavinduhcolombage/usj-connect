@@ -73,6 +73,10 @@ const TalentCard = (props: any) => {
         })
     }
 
+    const handleDateChange = (value: string | null) => {
+        setDate(value ? new Date(value) : null);
+    };
+
     useEffect(() => {
         if (props.applicantId) getProfile(props.applicantId).then((res) => {
             setProfile(res);
@@ -167,7 +171,7 @@ const TalentCard = (props: any) => {
         </Modal>
         <Modal opened={opened} onClose={close} title="Shedule Interview" centered>
             <div className="flex flex-col gap-4">
-                <DateInput value={date} onChange={setDate} minDate={new Date()} label="Date" placeholder="Enter Date" />
+                <DateInput value={date} onChange={handleDateChange} minDate={new Date()} label="Date" placeholder="Enter Date" />
                 <TimeInput label="Time" value={time} ref={ref} minTime="" onClick={() => ref.current?.showPicker()} onChange={(event) => setTime(event.currentTarget.value)} />
                 <Button onClick={() => handleOffer("INTERVIEWING")} className="!text-blue-700" variant="light" fullWidth>Shedule</Button>
             </div>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginValidation } from '../Services/FormValidation';
 import { notifications } from '@mantine/notifications';
-import { User } from '../types/User';
+import { type User } from '../types/User';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../Slices/UserSlice';
 import { setJwt } from '../Slices/JwtSlice';

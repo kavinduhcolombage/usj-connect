@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../Services/UserService';
 import { signupValidation } from '../Services/FormValidation';
 import { notifications } from '@mantine/notifications';
-import { User } from '../types/User';
+import { type User } from '../types/User';
 
 const form = {
     name: "",

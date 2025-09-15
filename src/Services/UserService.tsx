@@ -1,4 +1,4 @@
-import { User } from '../types/User';
+import { type User } from '../types/User';
 import axiosInstance from '../Interceptor/AxiosInterceptor';
 
 const path_URL = '/api/v1/usercontroller';
