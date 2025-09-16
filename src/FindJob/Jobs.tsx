@@ -92,7 +92,7 @@ const Jobs = () => {
 
 
     return <div className="relative p-5">
-        <LoadingOverlay visible={loading} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} loaderProps={{ color: "blue", type: "bars" }} />
+        <LoadingOverlay visible={loading} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} loaderProps={{ color: "red", type: "bars" }} />
         <div className="flex justify-between">
             <div className="text-2xl font-semibold max-[500px]:text-xl">Recommended job</div>
             <Sort sort="job" />

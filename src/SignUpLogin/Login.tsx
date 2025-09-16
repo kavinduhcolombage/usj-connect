@@ -92,7 +92,7 @@ const Login = () => {
         visible={loading}
         zIndex={1000}
         overlayProps={{ radius: 'sm', blur: 2 }}
-        loaderProps={{ color: 'blue', type: 'bars' }}
+        loaderProps={{ color: 'red', type: 'bars' }}
     /><div className="w-1/2 max-[650px]:w-full px-15 max-[800px]:px-6 flex flex-col items-center justify-center gap-5">
             <div className="text-2xl font-semibold ">Log in to your Account</div>
             <div className='flex flex-col gap-2.5'>
@@ -112,9 +112,9 @@ const Login = () => {
                 <div>
                     <PasswordInput value={data.password} name='password' error={formError.password} onChange={handleChange} withAsterisk leftSection={<IconLock size={18} stroke={1.5} />} label="Password" placeholder="Password" />
                 </div>
-                <Button loading={loading} variant="filled" size="md" radius="md" onClick={handleSubmit}>Log In</Button>
+                <Button className='!text-yellow-300 !bg-red-600' loading={loading} variant="filled" size="md" radius="md" color='red' onClick={handleSubmit}>Log In</Button>
 
-                <div className='mx-auto'>Don't have an account ? <Link to="/signup" className='text-blue-500 hover:underline'>Sign Up</Link></div>
+                <div className='mx-auto'>Don't have an account ? <Link to="/signup" className='text-red-500 hover:underline'>Sign Up</Link></div>
 
             </div>
         </div></>

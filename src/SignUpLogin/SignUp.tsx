@@ -147,12 +147,12 @@ const SignUp = () => {
                 </Radio.Group>
                 <div>
                     <Checkbox
-                        label={<>I accept{' '}<Anchor>terms & Conditions</Anchor></>}
+                        label={<>I accept{' '}<Anchor className='!text-red-500 hover:underline'>terms & Conditions</Anchor></>}
                     />
                 </div>
-                <Button loading={loading} variant="filled" size="md" radius="md" onClick={handleSubmit}>Sign Up</Button>
+                <Button className='!text-yellow-300 !bg-red-600' loading={loading} variant="filled" size="md" radius="md" onClick={handleSubmit}>Sign Up</Button>
 
-                <div className='mx-auto'>Have an account ? <Link to="/login" className='text-blue-500 hover:underline'>Login</Link></div>
+                <div className='mx-auto'>Have an account ? <Link to="/login" className='text-red-500 hover:underline'>Login</Link></div>
 
             </div>
         </div></>
