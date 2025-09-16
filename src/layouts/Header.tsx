@@ -58,7 +58,7 @@ const Header = () => {
 
         <div className='flex items-center gap-2 cursor-pointer'>
             <img className='h-13 max-[400px]:h-10' src="/usj1.png" alt="" />
-            <div className='text-2xl font-semibold text-yellow-300'>USJ Connect</div>
+            <div className='text-2xl max-[400px]:text-xl font-semibold text-yellow-300'>USJ Connect</div>
         </div>
 
         <div className='md:flex hidden'>
@@ -67,7 +67,7 @@ const Header = () => {
 
         <div className='flex gap-5 items-center justify-around'>
             {user ? <ProfileMenu /> : <Link to="/login">
-                <Button variant='subtle' color='yellow'>Login</Button>
+                <Button className='!p-1' variant='subtle' color='yellow'>Login</Button>
             </Link>}
             <div className='bg-gray-900 p-1.5 rounded-full cursor-pointer hidden md:flex hover:text-blue-500'>
                 <Settings size={25} />
@@ -86,7 +86,7 @@ const Header = () => {
                 <div className='flex flex-col gap-6 items-center'>
                     {
                         links.map((link, index) => (
-                            <div key={index} className={`${location.pathname === link.url ? 'border-blue-600 text-blue-500' : 'border-transparent'} border-b-[3px] h-full flex items-center`}>
+                            <div key={index} className={`${location.pathname === link.url ? 'border-red-700 text-red-700' : 'border-transparent'} border-b-[3px] h-full flex items-center`}>
                                 <Link className='hover:text-gray-600 text-xl' to={link.url}>{link.name}</Link>
                             </div>
                         ))

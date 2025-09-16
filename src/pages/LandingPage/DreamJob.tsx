@@ -25,7 +25,7 @@ const DreamJob = () => {
         <div className="w-[50%] max-[850px]:w-full flex items-center justify-center mx-10 max-[450px]:mx-5">
             <div className="relative">
                 <img className='h-100 max-[1050px]:h-80 max-[650px]:h-60 max-[500px]:ml-15 max-[450px]:ml-25 max-[400px]:ml-30' src="/images/women.png" alt="girl photo" />
-                <div className='absolute -right-1/5 max-[1050px]:-right-2/5 max-[950px]:-right-2/6 max-[650px]:-right-1/2 max-[500px]:-right-1/3 max-[450px]:right-2/5 w-fit top-[55%] max-[450px]:top-[65%] border border-blue-500 rounded-lg p-2 backdrop-blur-md'>
+                <div className='absolute -right-1/5 max-[1050px]:-right-2/5 max-[950px]:-right-2/6 max-[650px]:-right-1/2 max-[500px]:-right-1/3 max-[450px]:right-2/5 w-fit top-[55%] max-[450px]:top-[65%] border border-red-500 rounded-lg p-2 backdrop-blur-md'>
                     <div className='text-center mb-1 text-sm max-[650px]:text-xs'>10k+ got jobs</div>
                     <Avatar.Group spacing={matches ? "xs" : "sm"}>
                         <Avatar size={matches ? "sm" : "md"} src="/images/1.jpeg" />
