@@ -54,12 +54,12 @@ const Login = () => {
             loginUser(data).then((res) => {
                 notifications.show({
                     title: 'Login Succesfully.',
-                    message: 'Redirecting to home page...',
+                    message: '',
                     withCloseButton: true,
                     icon: <IconCheck />,
                     color: 'teal',
                     withBorder: true,
-                    className: "!border-blue-500 !bg-blue-50 !text-blue-800 !shadow-lg !rounded-lg !p-4 !w-[400px]",
+                    // className: "!border-blue-500 !bg-blue-50 !text-blue-800 !shadow-lg !rounded-lg !p-4 !w-[400px]",
                 });
                 dispatch(setJwt(res.jwt));
                 const decoded = jwtDecode(res.jwt);

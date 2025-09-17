@@ -70,7 +70,7 @@ const MultiInput = (props: any) => {
     <Combobox store={combobox} onOptionSubmit={handleValueSelect} withinPortal={false} width={200}>
       <Combobox.DropdownTarget>
         <PillsInput variant='unstyle' rightSection={<Combobox.Chevron />} onClick={() => combobox.toggleDropdown()} leftSection={
-          <div className='text-blue-500 p-1 bg-gray-300 rounded-full mr-4'><props.icon /></div>
+          <div className='text-yellow-400 p-1 bg-gray-400 rounded-full mr-4'><props.icon /></div>
         }>
           <Pill.Group>
             {value.length > 0 ? (

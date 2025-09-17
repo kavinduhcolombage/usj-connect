@@ -26,14 +26,14 @@ const SearchBar = () => {
     return <>
         <div className="flex justify-end p-4">
             {
-                matches && <Button onClick={toggle} radius="xl" variant="outline">{opened ? "Close" : "Filter"}</Button>
+                matches && <Button className="!text-red-700 !border-red-700" onClick={toggle} radius="xl" variant="outline">{opened ? "Close" : "Filter"}</Button>
             }
         </div>
 
         <Collapse in={(opened || !matches)}>
             <div className="flex flex-wrap px-8 py-5 justify-start max-[1000px]:gap-y-4">
                 <div className="flex items-center w-1/5 max-[1000px]:w-1/4 max-[900px]:w-1/3 max-[700px]:w-1/2">
-                    <div className="text-blue-500 bg-gray-400 rounded-full p-1 mr-2"><IconUserCircle size={20} /></div>
+                    <div className="text-yellow-400 bg-gray-400 rounded-full p-1 mr-2"><IconUserCircle size={20} /></div>
                     <Input defaultValue={name} onChange={(e) => handleChange("name", e)} className="[&_input]:!placeholder-gray-500" variant="unstyled" placeholder="Talent Name" />
                 </div>
                 {
@@ -50,7 +50,7 @@ const SearchBar = () => {
                         <div>Expereiance (Year)</div>
                         <div>{value[0]} - {value[1]}</div>
                     </div>
-                    <RangeSlider minRange={1} onChangeEnd={(e) => handleChange("exp", e)} size="xs" min={0} max={50} value={value} onChange={setValue} />
+                    <RangeSlider color="yellow" minRange={1} onChangeEnd={(e) => handleChange("exp", e)} size="xs" min={0} max={50} value={value} onChange={setValue} />
                 </div>
             </div>
         </Collapse>

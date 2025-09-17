@@ -20,7 +20,7 @@ const SearchBar = () => {
     return <>
         <div className="flex justify-end p-4">
             {
-                matches && <Button onClick={toggle} radius="xl" variant="outline">{opened ? "Close" : "Filter"}</Button>
+                matches && <Button className="!text-red-700 !border-red-700" onClick={toggle} radius="xl" variant="outline">{opened ? "Close" : "Filter"}</Button>
             }
         </div>
 
@@ -40,7 +40,7 @@ const SearchBar = () => {
                         <div>Salary</div>
                         <div>Rs.{value[0]} - Rs.{value[1]}</div>
                     </div>
-                    <RangeSlider min={0} max={1000000} onChangeEnd={handleChange} size="xs" value={value} step={1000} onChange={setValue} />
+                    <RangeSlider color="yellow" min={0} max={1000000} onChangeEnd={handleChange} size="xs" value={value} step={1000} onChange={setValue} />
                 </div>
             </div>
         </Collapse>

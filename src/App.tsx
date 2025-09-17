@@ -1,5 +1,5 @@
 import './App.css'
-import { MantineProvider } from '@mantine/core'
+import { LoadingOverlay, MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import '@mantine/dates/styles.css';
@@ -54,7 +54,16 @@ function App() {
         <Notifications position="top-center" zIndex={1000} />
         <BrowserRouter>
           <div className='relative'>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={
+              <div style={{ position: 'relative', minHeight: '100vh' }}>
+                <LoadingOverlay
+                  visible
+                  zIndex={1000}
+                  overlayProps={{ radius: 'sm', blur: 2 }}
+                  loaderProps={{ color: 'red', type: 'bars', size: 'lg' }}
+                />
+              </div>
+            }>
               <Routes>
                 <Route path="/find-job" element={<FindJobPage />} />
                 <Route path="/find-talents" element={<FindTalentsPage />} />
