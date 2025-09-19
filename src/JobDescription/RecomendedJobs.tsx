@@ -18,7 +18,7 @@ const RecommendedJobs = () => {
     })
   }, []);
 
-  return <div className="max-[900px]:w-full">
+  return <div className="max-[900px]:w-full w-1/3">
     {matches && <Divider />}
     <div className="text-xl max-[450px]:text-lg font-semibold mb-5 max-[900px]:mt-3">Recommended Jobs</div>
     <div className="grid gap-5 grid-cols-1 max-[900px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
