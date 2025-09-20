@@ -44,10 +44,11 @@ const PostedJobDesc = (props: any) => {
                         </Tabs.Panel>
 
                         <Tabs.Panel value="applicants">
-                            <div className="mt-10 flex flex-wrap gap-5 justify-around">
+                            <div className="mt-10 grid gap-5 grid-cols-3 max-[1000px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
                                 {
                                     arr?.length ? arr.map((applicant: any, index: any) => <TalentCard key={index} {...applicant} posted={true} />) : <div className="text-2xl font-semibold">No Applicants</div>
                                 }
+                                
                             </div>
                         </Tabs.Panel>
                         <Tabs.Panel value="invited">
