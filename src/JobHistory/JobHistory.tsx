@@ -1,4 +1,4 @@
-import { Tabs } from "@mantine/core";
+import { Loader, Tabs } from "@mantine/core";
 import Card from "./Card";
 import { useEffect, useState } from "react";
 import { getAllJobs } from "../Services/JobService";
@@ -10,11 +10,14 @@ const JobHistory = () => {
     const [showList, setShowList] = useState<any>([]);
     const profile = useSelector((state: any) => state.profile);
     const user = useSelector((state: any) => state.user);
+    const [loading, setLoading] = useState(true);
 
     const handleTabChange = (value: string | null) => {
+        setLoading(true);
         setActiveTab(value);
         if (value == "SAVED") {
             setShowList(jobList.filter((job: any) => profile.savedJobs?.includes(job.id)));
+            setLoading(false);
         } else {
             setShowList(jobList.filter((job: any) => {
                 let found = false;
@@ -25,6 +28,7 @@ const JobHistory = () => {
                 })
                 return found;
             }));
+            setLoading(false);
         }
     }
 
@@ -40,6 +44,7 @@ const JobHistory = () => {
                 })
                 return found;
             }));
+            setLoading(false); // loading finished
         }).catch((err) => {
             console.error("Error fetching job history:", err);
         })
@@ -58,13 +63,26 @@ const JobHistory = () => {
                     </Tabs.List>
 
                     <Tabs.Panel value={activeTab} className="[&>div]:w-full">
-                        <div className="mt-10 grid gap-5 grid-cols-4 max-[1000px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
+                        {loading ? (
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                minHeight: '300px'
+                            }}>
+                                <Loader color="red" />
+                            </div>
+                        ) : <div className="mt-10 grid gap-5 grid-cols-4 max-[1000px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
                             {
-                                showList.map((item: any, index: any) => (
+                                showList && showList.length > 0 ? showList.map((item: any, index: any) => (
                                     <Card key={index} {...item} {...{ [activeTab.toLowerCase()]: true }} />
-                                ))
+                                )) : (
+                                    <div className="flex justify-center items-center h-[30vh] w-screen text-gray-500">
+                                        No jobs found
+                                    </div>
+                                )
                             }
-                        </div>
+                        </div>}
                     </Tabs.Panel>
                 </Tabs>
             </div>
