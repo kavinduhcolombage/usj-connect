@@ -23,7 +23,7 @@ const Profile = () => {
 
     return <div className="w-4/6 max-[900px]:w-full">
         <div className="relative">
-            <img className="rounded-t-2xl" src="/Profile/banner.jpg" alt="" />
+            <img className="rounded-t-2xl" src="/Profile/banner2.jpg" alt="" />
             <div className="flex items-center justify-center absolute left-1/20 -bottom-1/4">
                 <Avatar className="!w-48 !h-48 max-[700px]:!w-40 max-[700px]:!h-40 max-[600px]:!w-30 max-[600px]:!h-30 max-[500px]:!w-26 max-[500px]:!h-26 border-white border-8 max-[700px]:border-5 max-[500px]:border-3 rounded-full" src={profile.picture ? `data:image/jpeg;base64,${profile.picture}` : "/Profile/avatar.jpg"} alt="" />
             </div>

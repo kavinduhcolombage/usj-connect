@@ -58,7 +58,7 @@ const JobHistory = () => {
                     </Tabs.List>
 
                     <Tabs.Panel value={activeTab} className="[&>div]:w-full">
-                        <div className="mt-10 grid gap-5 grid-cols-3 max-[1000px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
+                        <div className="mt-10 grid gap-5 grid-cols-4 max-[1000px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
                             {
                                 showList.map((item: any, index: any) => (
                                     <Card key={index} {...item} {...{ [activeTab.toLowerCase()]: true }} />

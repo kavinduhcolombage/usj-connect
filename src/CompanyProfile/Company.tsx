@@ -6,10 +6,16 @@ import CompanyEmployees from "./CompanyEmployees";
 
 const Company = () => {
     return (
-        <div className="w-3/4">
-            <div className="relative">
-                <img className="rounded-t-2xl" src="/Profile/banner.jpg" alt="" />
+        <div className="w-3/4 p-7">
+            {/* <div className="relative">
+                <img className="rounded-t-2xl" src="/Profile/banner2.jpg" alt="" />
                 <img className="w-36 h-36 rounded-3xl -bottom-1/4 p-2 absolute left-5 border-mine-shaft-950 bg-white" src="/CompanyLogo/Google.png" alt="" />
+            </div> */}
+            <div className="relative">
+                <img className="rounded-t-2xl" src="/Profile/banner2.jpg" alt="" />
+                <div className="flex items-center justify-center absolute left-1/15 -bottom-1/8">
+                    <img className="!w-40 !h-40 max-[700px]:!w-40 max-[700px]:!h-40 max-[600px]:!w-30 max-[600px]:!h-30 max-[500px]:!w-26 max-[500px]:!h-26 border-white border-8 max-[700px]:border-5 max-[500px]:border-3 rounded-2xl" src="/CompanyLogo/Google.png" alt="" />
+                </div>
             </div>
             <div className="px-3 mt-18">
                 <div className="text-3xl font-semibold flex justify-between">name<Avatar.Group>

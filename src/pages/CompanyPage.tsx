@@ -13,7 +13,7 @@ const CompanyPage = () => {
             <Header />
             <Button leftSection={<IconArrowLeft size={20} />} className="!text-blue-700" my="md" variant="light" onClick={() => navigate(-1)}>Back</Button>
 
-            <div className="flex gap-5 p-4 justify-around">
+            <div className="flex gap-5 p-4 pb-10 justify-around">
                 <Company />
                 <SimilarCompanies />
             </div>
