@@ -7,13 +7,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { IconArrowLeft, IconCheck, IconX } from "@tabler/icons-react";
 import { notifications } from "@mantine/notifications";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const PostJob = () => {
     const navigate = useNavigate();
     const select = fields;
     const user = useSelector((state: any) => state.user);
     const { id } = useParams();
+    const [loading, setLoading] = useState(false);
 
     const form = useForm({
         mode: 'controlled',
@@ -44,10 +45,10 @@ const PostJob = () => {
     })
     const handlePost = () => {
         form.validate();
-        if (!form.isValid()) return;
-        console.log("values frompost job form", form.getValues());
+        if (!form.isValid()) return;        
+        setLoading(true);
         postJob({ ...form.getValues(), id, postedBy: user.id, jobStatus: "ACTIVE" }).then((res) => {
-            console.log(res);
+            setLoading(false);
             notifications.show({
                 title: "Success",
                 message: "Job Posted Successfully",
@@ -60,6 +61,7 @@ const PostJob = () => {
             navigate(`/posted-job/${res.id}`);
         }).catch((err) => {
             console.log(err);
+            setLoading(false);
             notifications.show({
                 title: "Error Occurred",
                 message: err.code ? "something went wrong, please try again later" : err.message,
@@ -118,7 +120,7 @@ const PostJob = () => {
         {id !== "0" && <Button leftSection={<IconArrowLeft size={20} />} className="!text-blue-700" my="md" variant="light" onClick={() => navigate(-1)}>Back</Button>}
         <div className="w-4/5 mx-auto">
             <div className="text-2xl font-semibold mb-5 mt-5">Post a job</div>
-            <div className="flex flex-col gap-5 max-[500px]:gap-3">
+            <div className="flex flex-col gap-5 pb-12 max-[500px]:gap-3">
                 <div className="flex max-[500px]:flex-wrap max-[500px]:[&>*]:w-full gap-10 max-[600px]:gap-5 max-[500px]:gap-3 [&>*]:w-1/2">
                     <SelectInput form={form} name="jobTitle" {...select[0]} />
                     <SelectInput form={form} name="company" {...select[1]} />
@@ -139,7 +141,7 @@ const PostJob = () => {
                 <Textarea {...form.getInputProps('description')} withAsterisk autosize minRows={3} label="Job Description" placeholder="Enter job description here..." />
 
                 <div className="flex gap-5">
-                    <Button className="!text-blue-700 !bg-blue-200 hover:!border-blue-600" onClick={handlePost} variant="light">Publish job </Button>
+                    <Button loading={loading} className="!text-blue-700 !bg-blue-200 hover:!border-blue-600" onClick={handlePost} variant="light">Publish job </Button>
                     <Button className="!text-blue-700" onClick={handleDraft} variant="outline">Save as draft</Button>
                 </div>
             </div>

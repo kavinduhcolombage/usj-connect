@@ -61,7 +61,7 @@ const JobDescription = (props: any) => {
         }
     }, [props]);
 
-    return <div className="w-2/3 max-[900px]:w-full px-5 py-3">
+    return <div className="w-2/3 max-[900px]:w-full px-5 py-3 mb-10">
         <div className="flex flex-wrap justify-between">
             <div className="flex gap-3 items-center">
                 <div className="p-3 bg-gray-300 rounded-xl">

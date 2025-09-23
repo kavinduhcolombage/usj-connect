@@ -46,29 +46,29 @@ const PostedJobDesc = (props: any) => {
                         <Tabs.Panel value="applicants">
                             <div className="mt-10 grid gap-5 grid-cols-3 max-[1000px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
                                 {
-                                    arr?.length ? arr.map((applicant: any, index: any) => <TalentCard key={index} {...applicant} posted={true} />) : <div className="text-2xl font-semibold">No Applicants</div>
+                                    arr?.length ? arr.map((applicant: any, index: any) => <TalentCard key={index} {...applicant} posted={true} />) : <div className="w-[70vw] mt-30 text-center text-xl font-semibold">No Processing Applicants</div>
                                 }
                                 
                             </div>
                         </Tabs.Panel>
                         <Tabs.Panel value="invited">
-                            <div className="mt-10 grid gap-5 grid-cols-3 max-[1000px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
+                            <div className="mt-10 grid gap-5 grid-cols-2 max-[1000px]:grid-cols-2 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
                                 {
-                                    arr?.length ? arr.map((applicant: any, index: any) => <TalentCard key={index} {...applicant} invited={true} />) : <div className="text-2xl font-semibold">No Invited Candidates</div>
+                                    arr?.length ? arr.map((applicant: any, index: any) => <TalentCard key={index} {...applicant} invited={true} />) : <div className="w-[70vw] mt-30 text-center text-xl font-semibold">No Invited Candidates</div>
                                 }
                             </div>
                         </Tabs.Panel>
                         <Tabs.Panel value="offered">
                             <div className="mt-10 grid gap-5 grid-cols-3 max-[1000px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
                                 {
-                                    arr?.length ? arr.map((applicant: any, index: any) => <TalentCard key={index} {...applicant} offered />) : <div className="text-2xl font-semibold">No Offered Candidates</div>
+                                    arr?.length ? arr.map((applicant: any, index: any) => <TalentCard key={index} {...applicant} offered />) : <div className="w-[70vw] mt-30 text-center text-xl font-semibold">No Offered Candidates</div>
                                 }
                             </div>
                         </Tabs.Panel>
                         <Tabs.Panel value="rejected">
                             <div className="mt-10 grid gap-5 grid-cols-3 max-[1000px]:grid-cols-3 max-[800px]:grid-cols-2 max-[600px]:grid-cols-1">
                                 {
-                                    arr?.length ? arr.map((applicant: any, index: any) => <TalentCard key={index} {...applicant} offered />) : <div className="text-2xl font-semibold">No Rejected Candidates</div>
+                                    arr?.length ? arr.map((applicant: any, index: any) => <TalentCard key={index} {...applicant} offered />) : <div className="w-[70vw] mt-30 text-center text-xl font-semibold">No Rejected Candidates</div>
                                 }
                             </div>
                         </Tabs.Panel>

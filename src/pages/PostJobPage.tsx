@@ -7,7 +7,6 @@ const PostJobPage = () => {
         <div className="bg-gray-100 min-h-[100vh] font-['poppins']">
             <Header />
             <PostJob/>
-
             <Footer />
         </div>
 
