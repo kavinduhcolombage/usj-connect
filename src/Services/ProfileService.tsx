@@ -26,4 +26,10 @@ const getAllProfile = async () => {
         .catch(error => { throw error })
 }
 
-export { getProfile, updateProfile, getAllProfile };
+const getAllStudentsProfile = async () => {
+    return axiosInstance.get(`${path_URL}/getAllStudentsProfiles`)
+        .then(result => result.data)
+        .catch(error => { throw error });
+}
+
+export { getProfile, updateProfile, getAllProfile, getAllStudentsProfile };

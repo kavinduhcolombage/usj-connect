@@ -13,11 +13,10 @@ const JobHistory = () => {
     const [loading, setLoading] = useState(true);
 
     const handleTabChange = (value: string | null) => {
-        setLoading(true);
+
         setActiveTab(value);
         if (value == "SAVED") {
             setShowList(jobList.filter((job: any) => profile.savedJobs?.includes(job.id)));
-            setLoading(false);
         } else {
             setShowList(jobList.filter((job: any) => {
                 let found = false;
@@ -28,7 +27,6 @@ const JobHistory = () => {
                 })
                 return found;
             }));
-            setLoading(false);
         }
     }
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Sort from "../FindJob/Sort";
 import TalentCard from "./TalentCard";
-import { getAllProfile } from "../Services/ProfileService";
+import { getAllStudentsProfile } from "../Services/ProfileService";
 import { useDispatch, useSelector } from "react-redux";
 import { resetFilter } from "../Slices/FilterSlice";
 import { LoadingOverlay } from "@mantine/core";
@@ -23,7 +23,7 @@ const Talents = () => {
         dispatch(resetFilter());
         setLoading(true);
         if (user) {
-            getAllProfile().then((res) => {
+            getAllStudentsProfile().then((res) => {
                 setTalents(res);
             }).catch((err) => {
                 console.log(err);
