@@ -11,7 +11,6 @@ const JobCard = (props: any) => {
     const dispatch = useDispatch();
 
     const handleSaveJob = async () => {
-        console.log("profile in jobcard :", profile);
         let savedJobs: any = [...(profile.savedJobs || [])];
         if (savedJobs?.includes(props.id)) {
             savedJobs = savedJobs?.filter((jobId: string) => jobId !== props.id);

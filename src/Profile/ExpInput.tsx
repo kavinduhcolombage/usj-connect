@@ -1,6 +1,6 @@
 import { Button, Checkbox, Textarea } from "@mantine/core";
 import SelectInput from "./SelectInput";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import fields from "../Data/Profile";
 import { MonthPickerInput } from '@mantine/dates';
 import { isNotEmpty, useForm } from "@mantine/form";
@@ -14,6 +14,7 @@ const ExpInput = (props: any) => {
     const select = fields;
     const profile = useSelector((State: any) => State.profile);
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
 
     const form = useForm({
         mode: 'controlled',
@@ -52,6 +53,7 @@ const ExpInput = (props: any) => {
     const handleSave = async () => {
         form.validate();
         if (!form.isValid()) return;
+        setLoading(true);
         let exp = [...profile.experience];
         if (props.add) {
             exp.push({...form.getValues()});
@@ -69,6 +71,7 @@ const ExpInput = (props: any) => {
             dispatch(changeProfile(updatedProfile));
             props.setEdit(false);
             console.log("Updated Profile:", updatedProfile);
+            setLoading(false);
             notifications.show({
                 title: `${props.add ? "Added" : "Updated"} Succesfully.`,
                 message: `Experiance ${props.add ? "Added" : "Updated"}...`,
@@ -80,6 +83,7 @@ const ExpInput = (props: any) => {
             })
         } catch (error) {
             console.error("Error updating profile:", error);
+            setLoading(false);
             notifications.show({
                 title: "Error",
                 message: "Failed to update profile.",
@@ -109,7 +113,7 @@ const ExpInput = (props: any) => {
         <Checkbox checked={form.getValues().working} onChange={(e) => form.setFieldValue("working", e.currentTarget.checked)} autoContrast label="Currently Working Here" />
 
         <div className="flex gap-5 justify-end">
-            <Button onClick={handleSave} color="green.8" variant="outline">Save</Button>
+            <Button loading={loading} onClick={handleSave} color="green.8" variant="outline">Save</Button>
             <Button onClick={() => props.setEdit(false)} color="red.8" variant="light">Cancel</Button>
         </div>
     </div>

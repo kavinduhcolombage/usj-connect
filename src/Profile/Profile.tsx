@@ -57,7 +57,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="w-4/5 pt-3 max-[1000px]:w-full max-[1000px]:p-5 max-[500px]:p-3 mx-auto font-['poppins']">
+        <div className="w-7/10 pt-3 pb-7 max-[1000px]:w-full max-[1000px]:p-5 max-[500px]:p-3 mx-auto font-['poppins']">
             {/* Profile Banner and Avatar */}
             <div className="relative">
                 <img className="rounded-t-2xl" src="/Profile/banner2.jpg" alt="Profile Banner" />

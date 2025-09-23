@@ -5,27 +5,45 @@ import ExpInput from "./ExpInput";
 import { useDispatch, useSelector } from "react-redux";
 import { changeProfile } from "../Slices/ProfileSlice";
 import { notifications } from "@mantine/notifications";
-import { IconCheck } from "@tabler/icons-react";
+import { IconCheck, IconX } from "@tabler/icons-react";
+import { updateProfile } from "../Services/ProfileService";
 
 const ExpCard = (props: any) => {
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
     const profile = useSelector((state: any) => state.profile);
+    const [loading, setLoading] = useState(false);
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
+        setLoading(true);
         let exp = [...profile.experience];
         exp.splice(props.index, 1);
         let updatedProfile = { ...profile, experience: exp };
-        dispatch(changeProfile(updatedProfile));
-        notifications.show({
-            title: 'Removed Succesfully.',
-            message: 'profile updated...',
-            withCloseButton: true,
-            icon: <IconCheck />,
-            color: 'teal',
-            withBorder: true,
-            className: "!border-blue-500 !bg-blue-50 !text-blue-800 !shadow-lg !rounded-lg !p-4 !w-[400px]",
-        })
+
+        try {
+            await updateProfile(updatedProfile);
+            dispatch(changeProfile(updatedProfile));
+            setLoading(false);
+            notifications.show({
+                title: 'Removed Succesfully.',
+                message: 'profile updated...',
+                withCloseButton: true,
+                icon: <IconCheck />,
+                color: 'teal',
+                withBorder: true,
+                className: "!border-blue-500 !bg-blue-50 !text-blue-800 !shadow-lg !rounded-lg !p-4 !w-[400px]",
+            })
+        } catch (error) {
+            console.error("Error updating profile:", error);
+            setLoading(false);
+            notifications.show({
+                title: "Error",
+                message: "Failed to update profile.",
+                icon: <IconX />,
+                color: "red",
+            });
+        }
+
     }
 
     return !edit ? <div className="flex flex-col gap-2">
@@ -48,7 +66,7 @@ const ExpCard = (props: any) => {
         </div>
         {props.edit && <div className="flex gap-5 justify-end">
             <Button onClick={() => setEdit(true)} color="blue" variant="outline">Edit</Button>
-            <Button onClick={handleDelete} color="red.8" variant="light">Delete</Button>
+            <Button loading={loading} onClick={handleDelete} color="red.8" variant="light">Delete</Button>
         </div>}
     </div> : <ExpInput {...props} setEdit={setEdit} />
 }

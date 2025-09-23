@@ -8,11 +8,13 @@ import { changeProfile } from "../Slices/ProfileSlice";
 import { notifications } from "@mantine/notifications";
 import { IconCheck, IconX } from "@tabler/icons-react";
 import { updateProfile } from "../Services/ProfileService";
+import { useState } from "react";
 
 const CertiInput = (props: any) => {
     const select = fields;
     const profile = useSelector((state: any) => state.profile);
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
 
     const form = useForm({
         mode: 'controlled',
@@ -35,6 +37,7 @@ const CertiInput = (props: any) => {
     const handleSave = async () => {
         form.validate();
         if (!form.isValid()) return;
+        setLoading(true);
         let certi = [...profile.certifications];
         certi.push({...form.getValues()});
         certi[certi.length - 1].issueDate = certi[certi.length - 1].issueDate.toISOString();
@@ -44,6 +47,7 @@ const CertiInput = (props: any) => {
             dispatch(changeProfile(updatedProfile));
             props.setEdit(false);
             console.log("Updated Profile:", updatedProfile);
+            setLoading(false);
             notifications.show({
                 title: `Certificate ${props.add ? "Added" : "Updated"} Succesfully.`,
                 message: `Certificate ${props.add ? "Added" : "Updated"}...`,
@@ -55,6 +59,7 @@ const CertiInput = (props: any) => {
             })
         } catch (error) {
             console.error("Error updating profile:", error);
+            setLoading(false);
             notifications.show({
                 title: "Error",
                 message: "Failed to update profile.",
@@ -75,7 +80,7 @@ const CertiInput = (props: any) => {
             <TextInput {...form.getInputProps("certificateId")} label="Certificate ID" placeholder="Enter ID" withAsterisk />
         </div>
         <div className="flex gap-5 justify-end">
-            <Button onClick={handleSave} color="blue" variant="outline">Save</Button>
+            <Button loading={loading} onClick={handleSave} color="blue" variant="outline">Save</Button>
             <Button onClick={() => props.setEdit(false)} color="red.8" variant="light">Cancel</Button>
         </div>
 

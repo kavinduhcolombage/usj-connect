@@ -16,23 +16,37 @@ const Experience = () => {
 
     return (
         <div className="px-3">
-            <div className="text-2xl max-[600px]:text-xl max-[500px]:text-lg max-[400px]:text-base font-semibold mb-3 max-[500px]:mb-1 flex justify-between">
-                Experience
-                {!addExp && <div className="flex gap-2">
-                    {!edit && <ActionIcon onClick={() => setAddExp(true)} size="lg" color="blue" variant="subtle">
-                        <IconPlus />
-                    </ActionIcon>}
-                    <ActionIcon onClick={handleClick} size="lg" color={edit ? "red.8" : "blue"} variant="subtle">
-                        {edit ? <IconX /> : <IconPencil />}
-                    </ActionIcon>
-                </div>}
+            <div className="text-2xl max-[600px]:text-xl max-[500px]:text-lg max-[400px]:text-base font-semibold mb-3 max-[500px]:mb-1 flex justify-between items-center">
+                <span>Experience</span>
+                {!addExp && (
+                    profile?.experience && profile.experience.length > 0 ? (
+                        <div className="flex gap-2">
+                            {!edit && <ActionIcon onClick={() => setAddExp(true)} size="lg" color="blue" variant="subtle">
+                                <IconPlus />
+                            </ActionIcon>}
+                            <ActionIcon onClick={handleClick} size="lg" color={edit ? "red.8" : "blue"} variant="subtle">
+                                {edit ? <IconX /> : <IconPencil />}
+                            </ActionIcon>
+                        </div>
+                    ) : (
+                        <div className="flex justify-end w-full">
+                            <ActionIcon onClick={() => setAddExp(true)} size="lg" color="blue" variant="subtle">
+                                <IconPlus />
+                            </ActionIcon>
+                        </div>
+                    )
+                )}
             </div>
             <div className="flex flex-col gap-8">
                 {addExp && <ExpInput add setEdit={setAddExp} />}
                 {
-                    profile?.experience?.map((exp: any, index: number) => (
-                        <ExpCard key={index} index={index} {...exp} edit={edit} />
-                    ))
+                    profile?.experience && profile.experience.length > 0 ? (
+                        profile.experience.map((exp: any, index: number) => (
+                            <ExpCard key={index} index={index} {...exp} edit={edit} />
+                        ))
+                    ) : (
+                        <div className="text-center py-8 text-gray-500">Add experience</div>
+                    )
                 }
             </div>
         </div>
