@@ -45,7 +45,9 @@ const Footer = () => {
                 <div className="text-white">
                     <div className="text-2xl max-[700px]:text-xl font-semibold mb-4 max-[400px]:mb-3 text-yellow-500">Company</div>
                     <div className="text-sm max-[400px]:text-xs">
-                        <div className="hover:text-blue-400 cursor-pointer mb-1">About Us</div>
+                        <Link to={`/about-us`}>
+                            <div className="hover:text-blue-400 cursor-pointer mb-1">About Us</div>
+                        </Link>
                         <div className="hover:text-blue-400 cursor-pointer mb-1">Contact Us</div>
                     </div>
 
