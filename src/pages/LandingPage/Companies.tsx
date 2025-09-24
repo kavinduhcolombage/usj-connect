@@ -6,15 +6,12 @@ const logos = [
     '/CompanyLogo/Ifs.png',
     '/CompanyLogo/SyscoLab.png',
     '/CompanyLogo/Virtusa.png',
-    '/CompanyLogo/Azure.png',
     '/CompanyLogo/LSEG.png',
-    '/CompanyLogo/Google.png',
     '/CompanyLogo/99x.png',
     '/CompanyLogo/WSO2.png',
     '/CompanyLogo/Ifs.png',
     '/CompanyLogo/SyscoLab.png',
     '/CompanyLogo/Virtusa.png',
-    '/CompanyLogo/Azure.png',
     '/CompanyLogo/LSEG.png',  
 ];
 

@@ -17,7 +17,8 @@ const form = {
 }
 
 const SignUp = () => {
-
+    const [accepted, setAccepted] = useState(false);
+    const [acceptedError, setAcceptedError] = useState('');
     const [data, setData] = useState<User>(form);
     const [formError, setformError] = useState<{ [key: string]: string }>(form); // State for error message
     const navigate = useNavigate();
@@ -49,7 +50,6 @@ const SignUp = () => {
     }
 
     const handleSubmit = () => {
-
         let valid = true;
         const newFormErrror: { [key: string]: string } = {};
         for (const key in data) {
@@ -59,7 +59,12 @@ const SignUp = () => {
             if (newFormErrror[key] !== "" && newFormErrror[key] !== undefined) valid = false;
         }
         setformError(newFormErrror);
-        console.log(valid);
+        if (!accepted) {
+            setAcceptedError("You must accept the terms & conditions.");
+            valid = false;
+        } else {
+            setAcceptedError('');
+        }
         if (valid === true) {
             setLoading(true);
             registerUser(data).then((res) => {
@@ -141,14 +146,21 @@ const SignUp = () => {
                     withAsterisk
                 >
                     <Group className='!flex !justify-evenly max-[650px]:!justify-around !py-4'>
-                        <Radio className='' value="STUDENT" label="Student" />
-                        <Radio className='' value="COMPANY" label="Company" />
+                        <Radio className='' value="STUDENT" label="Student" color='red' />
+                        <Radio className='' value="COMPANY" label="Company" color='red' />
                     </Group>
                 </Radio.Group>
                 <div>
                     <Checkbox
+                        checked={accepted}
+                        onChange={(event) => {
+                            setAccepted(event.currentTarget.checked);
+                            if (event.currentTarget.checked) setAcceptedError('');
+                        }}
                         label={<>I accept{' '}<Anchor className='!text-red-500 hover:underline'>terms & Conditions</Anchor></>}
+                        color='red'
                     />
+                    <div className="text-red-500 text-sm my-1">{acceptedError}</div>
                 </div>
                 <Button className='!text-yellow-300 !bg-red-600' loading={loading} variant="filled" size="md" radius="md" onClick={handleSubmit}>Sign Up</Button>
 

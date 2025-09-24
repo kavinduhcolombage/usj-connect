@@ -35,8 +35,10 @@ const Footer = () => {
                     <div className="text-sm max-[400px]:text-xs">
                         <Link to={`/find-job`}>
                             <div className="hover:text-blue-400 cursor-pointer mb-1">Find job</div>
+                        </Link >
+                        <Link to={`/find-talents`}>
+                            <div className="hover:text-blue-400 cursor-pointer mb-1">Find Talent</div>
                         </Link>
-                        <div className="hover:text-blue-400 cursor-pointer mb-1">Find Company</div>
                     </div>
                 </div>
 

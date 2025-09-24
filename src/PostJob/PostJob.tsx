@@ -15,6 +15,7 @@ const PostJob = () => {
     const user = useSelector((state: any) => state.user);
     const { id } = useParams();
     const [loading, setLoading] = useState(false);
+    const [loadingSaveDraft, setLoadingSaveDraft] = useState(false);
 
     const form = useForm({
         mode: 'controlled',
@@ -45,7 +46,7 @@ const PostJob = () => {
     })
     const handlePost = () => {
         form.validate();
-        if (!form.isValid()) return;        
+        if (!form.isValid()) return;
         setLoading(true);
         postJob({ ...form.getValues(), id, postedBy: user.id, jobStatus: "ACTIVE" }).then((res) => {
             setLoading(false);
@@ -75,8 +76,12 @@ const PostJob = () => {
     }
 
     const handleDraft = () => {
-        postJob({ ...form.getValues(), postedBy: user.id, jobStatus: "DRAFT" }).then((res) => {
+        form.validateField('jobTitle');
+        if (!form.isValid('jobTitle')) return;
+        setLoadingSaveDraft(true);
+        postJob({ ...form.getValues(), id, postedBy: user.id, jobStatus: "DRAFT" }).then((res) => {
             console.log(res);
+            setLoadingSaveDraft(false);
             notifications.show({
                 title: "Success",
                 message: "Job Saved Successfully",
@@ -89,6 +94,7 @@ const PostJob = () => {
             navigate(`/posted-job/${res.id}`);
         }).catch((err) => {
             console.log(err);
+            setLoadingSaveDraft(false);
             notifications.show({
                 title: "Error Occurred",
                 message: err.code ? "something went wrong, please try again later" : err.message,
@@ -142,7 +148,7 @@ const PostJob = () => {
 
                 <div className="flex gap-5">
                     <Button loading={loading} className="!text-blue-700 !bg-blue-200 hover:!border-blue-600" onClick={handlePost} variant="light">Publish job </Button>
-                    <Button className="!text-blue-700" onClick={handleDraft} variant="outline">Save as draft</Button>
+                    <Button loading={loadingSaveDraft} className="!text-blue-700" onClick={handleDraft} variant="outline">Save as draft</Button>
                 </div>
             </div>
         </div>
