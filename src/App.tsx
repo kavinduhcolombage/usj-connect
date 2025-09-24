@@ -19,6 +19,7 @@ import PostedJobPage from './pages/PostedJobPage';
 import JobHistoryPage from './pages/JobHistoryPage';
 import ProtectedRoute from './Services/ProtectedRoute';
 import PublicRoute from './Services/PublicRoute';
+import AboutUsPage from './pages/AboutUsPage';
 
 // import HomePage from './pages/HomePage';
 // import FindJob from './pages/FindJob';
@@ -78,6 +79,7 @@ function App() {
                 <Route path="/posted-job/:id" element={<ProtectedRoute allowedRoles={['COMPANY']}><PostedJobPage /></ProtectedRoute>} />
                 <Route path="/job-history" element={<ProtectedRoute allowedRoles={['STUDENT']}> <JobHistoryPage /> </ProtectedRoute>} />
                 <Route path="*" element={<HomePage />} />
+                <Route path="/about-us" element={<AboutUsPage />} />
               </Routes>
             </Suspense>
           </div>
