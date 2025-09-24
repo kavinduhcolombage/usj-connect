@@ -65,12 +65,10 @@ const ExpInput = (props: any) => {
             exp[props.index].endDate = exp[props.index].endDate.toISOString();
         }
         let updatedProfile = { ...profile, experience: exp };
-        console.log("Updated Profile in ExpInput:", updatedProfile);
         try {
             await updateProfile(updatedProfile);
             dispatch(changeProfile(updatedProfile));
             props.setEdit(false);
-            console.log("Updated Profile:", updatedProfile);
             setLoading(false);
             notifications.show({
                 title: `${props.add ? "Added" : "Updated"} Succesfully.`,

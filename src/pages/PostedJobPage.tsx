@@ -19,6 +19,7 @@ const PostedJobPage = () => {
     const matches = useMediaQuery('(max-width: 1000px)');
     const [loading1, setLoading1] = useState(true);
     const [loading2, setLoading2] = useState(true);
+    const [reload, setReload] = useState(0);
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -34,6 +35,12 @@ const PostedJobPage = () => {
         })
     }, [id]);
 
+    useEffect(() => {
+        if (jobList.length > 0) {
+            setJob(null);
+        }
+    }, [reload]);
+
     return (
         <div>
             <Header />
@@ -48,7 +55,7 @@ const PostedJobPage = () => {
                     </Drawer>
                     <div className="flex gap-3 justify-around px-5">
                         {!matches && <div className="w-2/10">
-                            <PostedJob job={job} jobList={jobList} />
+                            <PostedJob job={job} jobList={jobList} onTabChanged={() => setReload(prev => prev + 1)}/>
                         </div>}
 
                         {loading2 ? (

@@ -26,7 +26,6 @@ const NotiMenu = () => {
     useEffect(() => {
         getNotifications(user.id).then((res) => {
             setNotifications(res);
-            console.log(res);
         }).catch((err) => {
             console.log(err);
         })

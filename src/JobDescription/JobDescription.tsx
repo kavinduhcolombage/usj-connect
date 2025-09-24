@@ -16,8 +16,6 @@ const JobDescription = (props: any) => {
     const dispatch = useDispatch();
     const [applied, setApplied] = useState(false);
 
-    console.log("job description props", props);
-
     const handleSaveJob = async () => {
         let savedJobs: any = [...(profile.savedJobs || [])];
         if (savedJobs?.includes(props.id)) {
@@ -36,10 +34,9 @@ const JobDescription = (props: any) => {
 
     const handleClose = () => {
         postJob({ ...props, jobStatus: "CLOSED" }).then((res) => {
-            console.log(res);
             notifications.show({
                 title: "Closed Succesfully",
-                message: "closed",
+                message: res.message,
                 withCloseButton: true,
                 icon: <IconCheck />,
                 color: 'teal',
