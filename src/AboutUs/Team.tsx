@@ -24,16 +24,16 @@ const Team = () => (
     >
       <Card.Section >
         <div className="justify-center items-center flex flex-col py-5">
-          <div className="text-3xl font-bold">Development Team</div>
+          <div className="text-3xl max-[400px]:text-2xl font-bold">Development Team</div>
         </div>
       </Card.Section>
 
-      <Group justify="space-between" grow>
+      <div className="flex gap-6 justify-around max-[400px]:flex-wrap">
         {developers.map((dev) => (
           <Card key={dev.name} shadow="md" radius="lg" padding="xl">
             <Card.Section component="a" href="">
               <Image
-                className="!w-110 !h-80"
+                className="!w-110 !h-80 max-[400px]:!w-80 max-[400px]:!h-50"
                 src={dev.img}
                 height={1}
                 width={15}
@@ -44,12 +44,14 @@ const Team = () => (
               <Text size="lg" fw={500}>{dev.name}</Text>
               <Badge color="yellow">{dev.role}</Badge>
             </Group>
-            <Text size="sm" c="dimmed">
+            <Text size="sm" c="dimmed" className="text-justify">
               {dev.desc}
             </Text>
           </Card>
         ))}
-      </Group>
+
+      </div>
+
     </Card>
   </Container>
 );

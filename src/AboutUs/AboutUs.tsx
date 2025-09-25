@@ -10,9 +10,9 @@ const AboutUs = () => (
             <Card.Section >
                 <div className="justify-center items-center flex flex-col gap-5 mb-6">
                     <div>
-                        <div className="text-3xl font-bold">About Us</div>
+                        <div className="text-3xl max-[400px]:text-2xl font-bold">About Us</div>
                     </div>
-                    <div className="text-center">USJ Connect is a modern platform designed to bridge the gap between students and companies, helping you discover opportunities, connect, and grow. Our mission is to empower careers and foster innovation in the campus community.</div>
+                    <div className="text-center p-1 px-2">USJ Connect is a modern platform designed to bridge the gap between students and companies, helping you discover opportunities, connect, and grow. Our mission is to empower careers and foster innovation in the campus community.</div>
                 </div>
             </Card.Section>
         </Card>
